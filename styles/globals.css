@@ -1,0 +1,288 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&family=Orbitron&family=PT+Mono&family=Roboto+Mono&family=Space+Mono&display=swap');
+html,
+body , *{
+  padding: 0;
+  margin: 0;
+font-family: 'PT Mono', monospace;
+    box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.main-container{
+  width:90%;
+  margin:20px auto ;
+  /* border: 2px solid black; */
+}
+
+.heading{
+  margin: 2em 0;
+ 
+}
+.heading h2{ 
+  /* color:	RGB(245, 5, 20); */
+  /* font-family: 'Roboto Mono', monospace; */
+font-size: 3em;
+text-align: center;
+}
+
+.heading p{
+font-size: 1em;
+text-align: center;
+}
+
+.products_container{
+/* border: solid black thin; */
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+}
+
+.product-card{
+  transition: 0.3s ease-in-out;
+  padding: 1em; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 1em;
+box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.product-image{
+width: 15em;
+height: 15em;
+cursor: pointer; 
+
+}
+.product-card:hover{
+  transform: scale(1.05);
+
+}
+
+.product-name{
+font-weight: 600;
+}
+.product-price{
+  margin-top: 0.5em;
+  /* font-family: 'Roboto Mono', monospace; */
+  font-size: 1em;
+  /* font-weight: bold; */
+}
+
+
+
+.product-details-container{
+  width: 100%;
+  /* height: 95vh; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  /* margin: 10px 0; */
+}
+.product-detail-image-container{
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.product-detail-image-container img{
+  width: 35em;
+  height: 35em;
+}
+
+.left{
+  /* border: solid black thin; */
+  background-color: #E5E6E8;
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+.right{ 
+  width: 30%;
+   /* border: solid rgb(235, 250, 20) thin; */
+  flex-grow: 1;
+  margin: 5px;
+  padding: 5px 15px;
+}
+
+
+.configuration{
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+.product-detail-device-name{
+
+font-size: 2.5em;
+/* font-family: 'PT Mono', monospace; */
+text-align: left;
+font-weight: 600;
+}
+
+.product-detail-device-detail{
+  margin-top: 35px;
+font-size: 1.3em;
+text-align: left;
+}
+.product-detail-device-price{
+font-size: 2em; 
+ text-align: left;
+/* font-family: 'Roboto Mono', monospace; */
+margin-top: 35px;
+}
+.dotted-line{
+  margin: 10px 0;
+  border-top: dotted 3px;
+}
+
+
+/* herobanner */
+.herobanner-container{
+  width: 100%;
+  margin:0 auto ;
+}
+.herobanner-container img{ 
+   border-radius: 10px;
+   width: 100%;
+}
+/* navbar */
+.navbar-container{
+  position: sticky;
+  height: 3em;
+  /* background-color: rgb(20, 130, 226); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 35px;
+  background-color: black;
+  color: white;
+}
+
+/* footer */
+.footer-container{
+  height: 100px;
+  background-color: rgb(211, 189, 189);
+  color: rgb(2, 2, 2);
+  /* margin-top: 50px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.footer-container p{
+  font-size: 10px;
+}
+.icons{
+  margin-top: 10px;
+}
+/* buttons */
+.button{
+  padding: 5px 15px;
+  margin:13px 19px 0 0;
+  cursor: pointer;
+  border-radius: 10px;
+  border: thin solid black;
+  border-style: dashed;
+  background-color: white;
+  transition: 0.5s ease-in-out;
+}
+.cart-icon{
+  background: transparent;
+  color: white;
+  font-size:22px;
+  border: none;
+  cursor: pointer;
+}
+.qty{
+  color:white;
+  background-color: red;
+  font-size: 10px;
+  border-radius: 10px;
+  padding: 2px 5px;
+  position: absolute;
+  right: 27px;
+}
+
+@media screen and (max-width: 700px) {
+  .heading h2{ 
+    font-size:1.5em;
+  }
+  .product-card{
+    width: 50%;
+    /* height: 13em; */
+    margin:  0;
+    box-shadow: none;
+    /* border: solid black 0.1px; */
+    
+  }
+  .product-card:hover{
+    transform: scale(1);
+  }
+  .product-image{
+    width: 10em;
+    height: 10em;
+  }
+
+  .product-name{
+    font-size: 11px;
+    text-align: center;
+    font-weight: 600;
+  }
+  .product-price{
+    font-size: 12px;
+  }
+
+  .herobanner-container img{ 
+    height: 120px;
+      /* border-radius: 0%; */
+  }
+}
+
+
+
+@media screen and (max-width: 1150px) {
+  .product-detail-image-container img{
+    width: 300px;
+    height: 300px;
+    overflow:auto;
+    margin:50px 0;
+  }
+
+ .left{
+    width: 100%;
+  }
+  .right{
+    width: 100%;
+    margin: 0;
+  }
+  .product-details-container{ 
+    flex-direction: column;
+  }
+  .configuration{
+    margin-top: 10px;
+  }
+ 
+  .product-detail-device-name{
+    font-size: 1.5em;
+  }
+  .product-detail-device-detail{
+    font-size: 1em;
+    margin-top: 20px;
+  }
+  .product-detail-device-price{
+    font-size: 1.5em;
+    /* margin-top: 4em; */
+  }
+
+
+}
