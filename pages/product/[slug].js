@@ -2,7 +2,7 @@ import React from 'react';
 import { client,urlFor } from '../../components/lib/client';
 import { Product } from '../../components';
 
-const productdetails = ({ product, products }) => {
+const Productdetails = ({ product, products }) => {
     const { image, name, details, price } = product;
   return (
     <>
@@ -70,4 +70,4 @@ export const getStaticPaths = async () => {
       props: { products, product }
     }
   }
-export default productdetails
+export default Productdetails
