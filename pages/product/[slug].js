@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { client,urlFor } from '../../components/lib/client';
 import { Product } from '../../components';
 
 const productdetails = ({ product, products }) => {
     const { image, name, details, price } = product;
-    const [index, setIndex] = useState(0);
   return (
     <>
 <div className='product-details-container'> 
 <div className='left'>
 
 <div className='product-detail-image-container'>
-  <img src={urlFor(image && image[index])} />
+  <img src={urlFor(image && image[0])} />
 </div>
     
 </div>
