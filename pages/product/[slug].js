@@ -1,16 +1,29 @@
 import React, { useState } from 'react';
 import { client,urlFor } from '../../components/lib/client';
 import { Product } from '../../components';
+import { useStateContext } from '../../context/StateContext';
 
-const productdetails = ({ product, products }) => {
+const Productdetails = ({ product, products }) => {
     const { image, name, details, price } = product;
     const [index, setIndex] = useState(0);
+    const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
   return (
     <>
-<div className='product-details-container'> 
+<div className='product-details-container'>
+   <div className='small-images-container'>
+    {image?.map((item, i) => (
+              <img 
+                key={i}
+                src={urlFor(item)}
+                className={i === index ? 'selected-image' : 'small-image'}
+                onMouseEnter={() => setIndex(i)}
+              />
+            ))}
+</div>
 <div className='left'>
 
 <div className='product-detail-image-container'>
+  
   <img src={urlFor(image && image[index])} />
 </div>
     
@@ -26,7 +39,7 @@ const productdetails = ({ product, products }) => {
 <hr className='dotted-line'></hr>
 
 
-<button  className='button'>Add to cart </button>
+<button  className='button' onClick={()=>onAdd(product,qty)}>Add to cart </button>
 <button className='button'>Buy Now</button>
 
 
@@ -71,4 +84,4 @@ export const getStaticPaths = async () => {
       props: { products, product }
     }
   }
-export default productdetails
+export default Productdetails

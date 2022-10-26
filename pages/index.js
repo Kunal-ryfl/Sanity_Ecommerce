@@ -1,16 +1,15 @@
 import React from 'react'
 import {client} from '../components/lib/client';
 import { Product,FooterBanner,HeroBanner } from '../components'
+
 const Home = ({ products, bannerData }) => 
    (
     <>
      <HeroBanner   heroBanner={bannerData.length && bannerData[0] }/>
 
- 
-
     <div className='heading'>
-      <h2>Smartphone Deals</h2>
-      <p> Grab yours!</p>
+      {/* <h2>Smartphone Deals</h2> */}
+      {/* <p> Grab yours!</p> */}
     </div>
   
     <div className='products_container'>
@@ -18,7 +17,7 @@ const Home = ({ products, bannerData }) =>
       {products?.map((product)=><Product key={product.id} product={product}/>)}
     </div>
 
-    {/* <FooterBanner/> */}
+    <FooterBanner footerBanner = {bannerData.length && bannerData[1] } />
     </>
 );
 export const getServerSideProps = async () => {
