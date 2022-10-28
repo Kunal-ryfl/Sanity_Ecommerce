@@ -1,24 +1,25 @@
-import React from 'react'
-import {client} from '../components/lib/client';
-import { Product,FooterBanner,HeroBanner } from '../components'
+import React from "react";
+import { client } from "../components/lib/client";
+import { Product, FooterBanner, HeroBanner } from "../components";
+import { animate, motion } from "framer-motion";
 
-const Home = ({ products, bannerData }) => 
-   (
-    <>
-     <HeroBanner   heroBanner={bannerData.length && bannerData[0] }/>
+const Home = ({ products, bannerData }) => (
+  <div>
+    <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
 
-    <div className='heading'>
+    <div className="heading">
       {/* <h2>Smartphone Deals</h2> */}
       {/* <p> Grab yours!</p> */}
     </div>
-  
-    <div className='products_container'>
 
-      {products?.map((product)=><Product key={product.id} product={product}/>)}
+    <div className="products_container">
+      {products?.map((product) => (
+        <Product key={product.id} product={product} />
+      ))}
     </div>
 
-    <FooterBanner footerBanner = {bannerData.length && bannerData[1] } />
-    </>
+    <FooterBanner footerBanner={bannerData.length && bannerData[1]} />
+  </div>
 );
 export const getServerSideProps = async () => {
   const query = '*[_type == "product"]';
@@ -28,8 +29,8 @@ export const getServerSideProps = async () => {
   const bannerData = await client.fetch(bannerQuery);
 
   return {
-    props: { products, bannerData }
-  }
-}
+    props: { products, bannerData },
+  };
+};
 
-export default Home
+export default Home;

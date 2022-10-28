@@ -1,95 +1,103 @@
+import React, { useRef, useEffect } from "react";
+import Link from "next/link";
+import {
+  AiOutlineMinus,
+  AiOutlinePlus,
+  AiOutlineLeft,
+  AiOutlineShopping,
+} from "react-icons/ai";
+import { TiDeleteOutline } from "react-icons/ti";
+import toast from "react-hot-toast";
 
-import React, { useRef } from 'react';
-import Link from 'next/link';
-import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 'react-icons/ai';
-import { TiDeleteOutline } from 'react-icons/ti';
-import toast from 'react-hot-toast';
-
-
-import { useStateContext } from '../context/StateContext';
-import { urlFor } from './lib/client';
+import { useStateContext } from "../context/StateContext";
+import { urlFor } from "./lib/client";
 
 const Cart = () => {
-  const cartRef = useRef();
-  const { totalPrice, totalQuantities, cartItems, setShowCart } = useStateContext();
+  const { totalPrice, totalQuantities, onRemove, cartItems, setCartItems } =
+    useStateContext();
 
   return (
     <>
-    <div className="cart-container" ref={cartRef}>
-
-    <div className="cart-product-container">
-    <div className="cart-product-container-left">
-
-
-
-
-    {cartItems.length < 1 && (
-          <div className="empty-cart">
-            <AiOutlineShopping size={100} />
-            <h3>Your shopping cart is empty</h3>
-            <Link href="/">
-              <button
-                type="button"
-                className="button"
-              >
-                Take me to Home!
-              </button>
-            </Link>
-          </div>
-        )}
-
-
-
-
-
-
-
-
-
-
-
-       {cartItems.length >= 1 && cartItems.map((item) => (
-            <div className="cart-product" key={item._id}>
-              
-              <div className="cart-product-left">
-                   <img src={urlFor(item?.image[0])} className="cart-product-image"/>
+      <div className="cart-container">
+    
+        <div className="cart-product-container">
+          <div className="cart-product-container-left">
+            {cartItems.length < 1 && (
+              <div className="empty-cart">
+                <AiOutlineShopping size={150} />
+                <h3>Your shopping cart is empty!</h3>
+                <Link href="/">
+                  <button type="button" className="blue-button">
+                    TAKE ME TO HOME
+                  </button>
+                </Link>
               </div>
-           
-           <div className="cart-product-right">
-              <h2>${item.price}</h2>
-              <h3>{item.name}</h3>
-           </div>
-              
-            </div>
+            )}
 
+            {cartItems.length >= 1 &&
+              cartItems.map((item) => (
+                <div className="cart-product" key={item._id}>
+                  <div className="cart-product-left">
+                    <img
+                      src={urlFor(item?.image[0])}
+                      className="cart-product-image"
+                    />
+                  </div>
 
+                  <div className="cart-product-right">
+                    <h2>${item.price}</h2>
+                    <h3>{item.name}</h3>
+                    <h3>{item.quantity} unit</h3>
 
-          ))}
-    </div>
+                    <button
+                      className="white-button"
+                      onClick={() => onRemove(item)}
+                    >
+                      REMOVE
+                    </button>
+                  </div>
+                </div>
+              ))}
+          </div>
 
+          {/* conditional rendering using ternary opeartion in nextjs */}
 
-   
-    <div className="cart-product-container-right">
-       <h1>PRICE DETAILS</h1>
-       <div className="cart-checkout">
-               
+          <div className="cart-product-container-right">
+            {cartItems.length >= 1 ? (
+              <>
+                <h2>PRICE DETAILS</h2>
+                <div className="cart-checkout">
+                  <table>
+                    <tr>
+                      <td> Price</td>
+                      <td> ${totalPrice}</td>
+                    </tr>
+                    <tr>
+                      <td> Delivery Charges</td>
+                      <td> FREE</td>
+                    </tr>
+                    <tr>
+                      <td> Discount</td>
+                      <td> $0</td>
+                    </tr>
+                    <tr>
+                      <td> Total items</td>
+                      <td> {totalQuantities} items</td>
+                    </tr>
+                  </table>
 
-              <h4> Price :-     ${totalPrice} </h4>      
-              <h4> Delivery Charges :-   FREE</h4>      
-              <h4> Discount :- $0 </h4>
-              <h3> Total Amount :- ${totalPrice}</h3>
-           </div>
-    </div>
-          
-
-
-
-    </div>
-
-
-    </div>
+                  <h3> Total Amount&emsp; ${totalPrice}/-</h3>
+                  <button className="cout-btn"> CHECKOUT </button>
+                </div>
+              </>
+            ) : (
+              <> </>
+            )}
+          </div>
+        </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
