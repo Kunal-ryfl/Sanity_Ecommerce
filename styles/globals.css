@@ -556,6 +556,7 @@ th, td {
     box-shadow: none;
     align-items: flex-start;
     padding: 5px 0;
+    width: 295px;
   }
 
   th, td {
