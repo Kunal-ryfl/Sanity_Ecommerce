@@ -22,6 +22,22 @@ const fadeInUp = {
   },
 };
 
+const fadeInUp2 = {
+  initial: {
+    y: 60,
+    opacity: 0,
+    transition: { duration: 1.5, ease: easing },
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1.5,
+      ease: easing,
+    },
+  },
+};
+
 
 const Productdetails = ({ product, products }) => {
   const { image, name, details, price } = product;
@@ -54,7 +70,7 @@ const Productdetails = ({ product, products }) => {
         </div>
 
         <div className="right">
-          <div className="right-card">
+          <motion.div variants={fadeInUp2}  className="right-card">
             <pre className="configuration">Device Configuration...</pre>
             <h1 className="product-detail-device-name"> {name} </h1>
             <p className="product-detail-device-detail">{details}</p>
@@ -65,7 +81,7 @@ const Productdetails = ({ product, products }) => {
               ADD TO CART
             </button>
             <button className="white-button">BUY NOW</button>
-          </div>
+       </motion.div>
         </div>
       </div>
     </motion.div>
