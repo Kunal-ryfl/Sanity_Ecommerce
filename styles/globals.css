@@ -213,17 +213,22 @@ a {
 }
 
 /* navbar */
-.navbar-container {
+header{
   position: sticky;
+  z-index: 2;
+  top: 0;
+}
+
+.navbar-container {
   height: 3em;
-  /* background-color: rgb(20, 130, 226); */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 35px;
   background-color: black;
-  color: white;
+  color:white;
 }
+
 .logo-text {
   cursor: pointer;
   font-style: italic;
