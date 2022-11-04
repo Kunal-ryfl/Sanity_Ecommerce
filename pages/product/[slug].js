@@ -3,6 +3,12 @@ import { client, urlFor } from "../../components/lib/client";
 import { Product } from "../../components";
 import { useStateContext } from "../../context/StateContext";
 import { animate, motion } from "framer-motion";
+import Link from "next/link";
+import {
+  AiOutlineStar,
+  AiFillStar,
+  AiOutlineUser
+} from "react-icons/ai";
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 
@@ -38,17 +44,12 @@ const fadeInUp2 = {
   },
 };
 
-
-const Productdetails = ({ product, products }) => {
+const Productdetails = ({ product }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
   return (
-    <motion.div
-      initial="initial"
-      animate= "animate"
-      exit={{ opacity: 0 }}
-    >
+    <motion.div initial="initial" animate="animate" exit={{ opacity: 0 }}>
       <div className="product-details-container">
         <div className="small-images-container">
           {image?.map((item, i) => (
@@ -56,6 +57,7 @@ const Productdetails = ({ product, products }) => {
               key={i}
               src={urlFor(item)}
               className={i === index ? "selected-image" : "small-image"}
+              // onMouseEnter={() => setIndex(i)}
               onClick={() => setIndex(i)}
             />
           ))}
@@ -70,7 +72,7 @@ const Productdetails = ({ product, products }) => {
         </div>
 
         <div className="right">
-          <motion.div variants={fadeInUp2}  className="right-card">
+          <motion.div variants={fadeInUp2} className="right-card">
             <pre className="configuration">Device Configuration...</pre>
             <h1 className="product-detail-device-name"> {name} </h1>
             <p className="product-detail-device-detail">{details}</p>
@@ -80,10 +82,56 @@ const Productdetails = ({ product, products }) => {
             <button className="blue-button" onClick={() => onAdd(product, qty)}>
               ADD TO CART
             </button>
-            <button className="white-button">BUY NOW</button>
-       </motion.div>
+            <Link href={`/cart`}>
+            <button onClick={() => onAdd(product, qty)} className="white-button">BUY NOW</button>
+            </Link>
+          </motion.div>
         </div>
       </div>
+
+
+      <div className="review-container">
+      
+      <div className="review-container-left">
+        <h1 className="Rating-text">4</h1>
+     
+     <div>   
+     <AiFillStar/>
+     <AiFillStar/>
+     <AiFillStar/>
+     <AiFillStar/>
+     <AiOutlineStar/>
+     </div>
+
+<div> 
+  <p>   
+  <AiOutlineUser/> 
+   132 Ratings</p>
+</div>
+
+      </div>
+      <div className="review-container-right">
+
+       <div> 
+        <h1>Reviews(2)</h1>
+       </div>
+     
+     <div className="review-text">   
+         <img  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60"/> 
+      <p>Amazing phone with great cameras and better battery which gives you the best performance. I just love the camera .</p>
+     
+     </div>
+     <div className="review-text">   
+         <img  src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60"/> 
+         <p> Really satisfied with the Product I received... It’s totally genuine and the packaging was also really good so if ur planning to buy just go for it.</p>
+     </div>
+         
+
+      </div>
+
+
+      </div>
+
     </motion.div>
   );
 };
@@ -119,7 +167,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
   console.log(product);
 
   return {
-    props: { products, product },
+    props: {  product }
   };
 };
 export default Productdetails;
