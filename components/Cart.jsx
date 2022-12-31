@@ -62,7 +62,7 @@ const Cart = () => {
           <div className="cart-product-container-right">
             {cartItems.length >= 1 ? (
               <>
-                <h2>PRICE DETAILS</h2>
+                <h2>Order Summary</h2>
                 <div className="cart-checkout">
                   <table>
                     <tr>
@@ -71,7 +71,7 @@ const Cart = () => {
                     </tr>
                     <tr>
                       <td> Delivery Charges</td>
-                      <td> FREE</td>
+                      <td> Free</td>
                     </tr>
                     <tr>
                       <td> Discount</td>
