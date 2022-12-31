@@ -21,8 +21,8 @@ export const StateContext = ({ children }) => {
       if (storedCartItems !== null) {
         setCartItems([...cartItems, ...storedCartItems]);
       }
-          setTotalPrice( parseInt( localStorage.getItem("TotalPrice")));
-          setTotalQuantities(parseInt( localStorage.getItem("Totalqty")));
+      if(localStorage.getItem("TotalPrice") !== null) setTotalPrice( parseInt( localStorage.getItem("TotalPrice")));
+      if(localStorage.getItem("Totalqty") !== null) setTotalQuantities(parseInt( localStorage.getItem("Totalqty")));
         };
   
 
