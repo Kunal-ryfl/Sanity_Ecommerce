@@ -19,20 +19,28 @@ export const StateContext = ({ children }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedCartItems = JSON.parse(localStorage.getItem("cartItems"));
-      const storedTp = parseInt(  localStorage.getItem("TotalPrice"));
-      const storedqty = parseInt(  localStorage.getItem("Totalqty"));
 
       if (storedCartItems !== null) {
         setCartItems([...cartItems, ...storedCartItems]);
       }
 
-      if(storedTp!== null){
-       setTotalPrice( storedTp );
-      }    
+  
+  
+       if (parseInt(localStorage.TotalPrice)) { // NaN is falsy and will be ignored
+        setTotalPrice(parseInt(localStorage.TotalPrice));
+     } else {
+         localStorage.TotalPrice = totalPrice;
+     }
 
-      if(storedqty!== null){
-       setTotalQuantities(storedqty);
-      }
+
+     if (parseInt(localStorage.Totalqty)) { // NaN is falsy and will be ignored
+      setTotalQuantities(parseInt(localStorage.Totalqty));
+   } else {
+       localStorage.Totalqty = totalQuantities;
+   }
+
+  
+      
         };
 
   }, []);
