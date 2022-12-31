@@ -14,21 +14,29 @@ export const StateContext = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
+  
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedCartItems = JSON.parse(localStorage.getItem("cartItems"));
+      const storedTp = parseInt(  localStorage.getItem("TotalPrice"));
+      const storedqty = parseInt(  localStorage.getItem("Totalqty"));
+
       if (storedCartItems !== null) {
         setCartItems([...cartItems, ...storedCartItems]);
       }
-      if(localStorage.getItem("TotalPrice") !== null) setTotalPrice( parseInt( localStorage.getItem("TotalPrice")));
-      if(localStorage.getItem("Totalqty") !== null) setTotalQuantities(parseInt( localStorage.getItem("Totalqty")));
-        };
-  
 
+      if(storedTp!== null){
+       setTotalPrice( storedTp );
+      }    
+
+      if(storedqty!== null){
+       setTotalQuantities(storedqty);
+      }
+        };
 
   }, []);
-
+  
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -37,6 +45,7 @@ export const StateContext = ({ children }) => {
 
     }
   }, [cartItems]);
+
 
   let foundProduct;
 
