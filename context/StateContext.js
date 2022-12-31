@@ -3,7 +3,6 @@ import React, {
   useContext,
   useState,
   useEffect,
-  useRef,
 } from "react";
 import { toast } from "react-hot-toast";
 
@@ -22,12 +21,20 @@ export const StateContext = ({ children }) => {
       if (storedCartItems !== null) {
         setCartItems([...cartItems, ...storedCartItems]);
       }
-    }
+          setTotalPrice( parseInt( localStorage.getItem("TotalPrice")));
+          setTotalQuantities(parseInt( localStorage.getItem("Totalqty")));
+        };
+  
+
+
   }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      window.localStorage.setItem("TotalPrice", totalPrice);
+      window.localStorage.setItem("Totalqty", totalQuantities);
+
     }
   }, [cartItems]);
 
@@ -37,6 +44,7 @@ export const StateContext = ({ children }) => {
     const checkProductInCart = cartItems.find(
       (item) => item._id === product._id
     );
+    
 
     setTotalPrice(
       (prevTotalPrice) => prevTotalPrice + product.price * quantity
@@ -58,7 +66,8 @@ export const StateContext = ({ children }) => {
 
       setCartItems([...cartItems, { ...product }]);
     }
-
+       
+    
     toast.success(`${qty} ${product.name} added to the cart.`);
   };
 
@@ -76,6 +85,14 @@ export const StateContext = ({ children }) => {
     setCartItems(newCartItems);
   };
 
+  const HandleCheckOut = ()=>{
+    
+    toast.error("Payment gateway not integrated")
+
+
+  };
+
+
   return (
     <Context.Provider
       value={{
@@ -91,6 +108,7 @@ export const StateContext = ({ children }) => {
         setQty,
         onAdd,
         onRemove,
+        HandleCheckOut,
       }}
     >
       {children}
