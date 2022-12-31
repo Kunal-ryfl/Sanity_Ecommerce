@@ -61,8 +61,8 @@ export const StateContext = ({ children }) => {
     const checkProductInCart = cartItems.find(
       (item) => item._id === product._id
     );
-    
 
+    
     setTotalPrice(
       (prevTotalPrice) => prevTotalPrice + product.price * quantity
     );
@@ -70,20 +70,24 @@ export const StateContext = ({ children }) => {
 
     if (checkProductInCart) {
       const updatedCartItems = cartItems.map((cartProduct) => {
-        if (cartProduct._id === product._id)
+        if (cartProduct._id === product._id) {
           return {
-            ...cartProduct,
-            quantity: cartProduct.quantity + quantity,
-          };
-      });
+              ...cartProduct,
+              quantity: cartProduct.quantity + quantity
+          } 
+      } else {
+          return {...cartProduct}
+      }});
 
       setCartItems(updatedCartItems);
     } else {
       product.quantity = quantity;
 
       setCartItems([...cartItems, { ...product }]);
+
+  
     }
-       
+  
     
     toast.success(`${qty} ${product.name} added to the cart.`);
   };
