@@ -48,6 +48,8 @@ const Productdetails = ({ product }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
+  const check = cartItems.find((item) => item._id === product._id);
+  
   return (
     <motion.div initial="initial" animate="animate" exit={{ opacity: 0 }}>
       <div className="product-details-container">
@@ -79,9 +81,15 @@ const Productdetails = ({ product }) => {
 
             <h1 className="product-detail-device-price">${price}</h1>
 
+           { 
+             !check ?(
             <button className="blue-button" onClick={() => onAdd(product, qty)}>
               ADD TO CART
-            </button>
+            </button>):(<> <button className="grey-button">
+              IN CART
+            </button>   </>)
+              }
+
             <Link href={`/cart`}>
             <button onClick={() => onAdd(product, qty)} className="white-button">BUY NOW</button>
             </Link>
