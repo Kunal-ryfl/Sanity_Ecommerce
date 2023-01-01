@@ -47,7 +47,7 @@ const fadeInUp2 = {
 const Productdetails = ({ product }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
-  const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
+  const { decQty, incQty, qty, onAdd, setShowCart,cartItems } = useStateContext();
   const check = cartItems.find((item) => item._id === product._id);
   
   return (
