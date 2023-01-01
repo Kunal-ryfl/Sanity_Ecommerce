@@ -264,6 +264,16 @@ header{
   color: white;
   font-weight: 900;
 }
+.grey-button {
+  padding: 10px 35px;
+  margin: 40px 19px 0 0;
+  cursor: pointer;
+  border-radius: 3px;
+  border:none;
+  background: #6e6e6e;
+  color: white;
+  font-weight: 900;
+}
 
 .white-button {
   padding: 10px 35px;
