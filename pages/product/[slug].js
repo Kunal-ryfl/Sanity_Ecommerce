@@ -71,7 +71,7 @@ const Productdetails = ({ product }) => {
             <button className="blue-button" onClick={() => onAdd(product, qty)}>
               ADD TO CART
             </button>):(<> <button className="grey-button">
-              IN CART
+              IN THE CART
             </button>   </>)
               }
 
