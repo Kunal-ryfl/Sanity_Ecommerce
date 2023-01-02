@@ -2,14 +2,16 @@ import React, { useRef, useEffect } from "react";
 import Link from "next/link";
 import {
   AiOutlineShopping,
+  AiOutlineMinus,
+   AiOutlinePlus
 } from "react-icons/ai";
 
 
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "./lib/client";
 
-const Cart = () => {
-  const { totalPrice, totalQuantities, onRemove, cartItems, setCartItems ,HandleCheckOut} =
+const Cart = (product) => {
+  const { totalPrice, totalQuantities, onRemove, cartItems,setCartItems ,toggleAdd,toggleMinus,HandleCheckOut} =
     useStateContext();
 
   return (
@@ -32,6 +34,7 @@ const Cart = () => {
             )}
 
             {cartItems.length >= 1 &&
+          
               cartItems.map((item) => (
                 <div className="cart-product" key={item._id}>
                   <div className="cart-product-left">
@@ -44,8 +47,8 @@ const Cart = () => {
                   <div className="cart-product-right">
                     <h2>${item.price}</h2>
                     <h3>{item.name}</h3>
-                    <h3>{item.quantity} unit</h3>
-
+                    <h3><div className="qty-btn"><AiOutlineMinus  onClick={()=>toggleMinus(item._id)} cursor={"pointer"}/> {item.quantity} <AiOutlinePlus onClick={()=>toggleAdd(item._id)} cursor={"pointer"}/></div></h3>
+                    
                     <button
                       className="white-button"
                       onClick={() => onRemove(item)}
@@ -62,7 +65,7 @@ const Cart = () => {
           <div className="cart-product-container-right">
             {cartItems.length >= 1 ? (
               <>
-                <h2>Order Summary</h2>
+                <h2>Order Summary </h2>
                 <div className="cart-checkout">
                   <table>
                     <tr>
