@@ -1,9 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import {
   AiOutlineShopping,
-  AiOutlineMinus,
-   AiOutlinePlus
+   AiFillPlusCircle,
+   AiFillMinusCircle,
 } from "react-icons/ai";
 
 
@@ -11,7 +11,7 @@ import { useStateContext } from "../context/StateContext";
 import { urlFor } from "./lib/client";
 
 const Cart = (product) => {
-  const { totalPrice, totalQuantities, onRemove, cartItems,setCartItems ,toggleAdd,toggleMinus,HandleCheckOut} =
+  const { totalPrice, totalQuantities, onRemove, cartItems,toggleAdd,toggleMinus,HandleCheckOut} =
     useStateContext();
 
   return (
@@ -47,7 +47,7 @@ const Cart = (product) => {
                   <div className="cart-product-right">
                     <h2>${item.price}</h2>
                     <h3>{item.name}</h3>
-                    <h3><div className="qty-btn"><AiOutlineMinus  onClick={()=>toggleMinus(item._id)} cursor={"pointer"}/> {item.quantity} <AiOutlinePlus onClick={()=>toggleAdd(item._id)} cursor={"pointer"}/></div></h3>
+                    <h3><div className="qty-btn"><AiFillMinusCircle size={22}  onClick={()=>toggleMinus(item._id)} cursor={"pointer"}/> {item.quantity} <AiFillPlusCircle size={22} onClick={()=>toggleAdd(item._id)} cursor={"pointer"}/></div></h3>
                     
                     <button
                       className="white-button"
