@@ -12,10 +12,6 @@ body,
 ::-webkit-scrollbar {
   width: 0px;
 }
-/* .main-container{
-  width: 100%;
-  margin: 0 auto;
-} */
 
 a {
   color: inherit;
@@ -26,9 +22,7 @@ a {
   margin: 2em 0;
 }
 .heading h2 {
-  /* color:	RGB(245, 5, 20); */
   font-size: 30px;
-  /* text-align: center; */
   margin-left: 20px;
 }
 
@@ -38,7 +32,6 @@ a {
 }
 
 .products_container {
-  /* border: solid black thin; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -69,7 +62,6 @@ a {
 .product-name{
   margin-top: 14px;
   font-size: 13px;
-  /* font-weight: bold; */
 }
 .product-price {
   margin-top: 10px;
@@ -79,13 +71,11 @@ a {
 
 .product-details-container {
   width: 100%;
-  /* height: 95vh; */
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: flex-start;
   justify-content: flex-start;
-  /* margin: 10px 0; */
 }
 .product-detail-image-container {
   width: 100%;
@@ -101,7 +91,6 @@ a {
 }
 
 .left {
-  /* border: solid black thin; */
   background-color: #e5e6e8;
   width: 50%;
   height: 100%;
@@ -113,7 +102,6 @@ a {
 .right {
   width: 50%;
   height: 550px;
-  /* border: solid rgb(235, 250, 20) thin; */
   margin: 5px;
   padding: 5px 15px;
   display: flex;
@@ -124,14 +112,10 @@ a {
 
 .right-card {
   width: 360px;
-  /* border: solid black thin; */
   padding: 5px 10px; 
-  /* height: 350px; */
-
 }
 
 .configuration {
-  /* margin-top:190px; */
   margin-bottom: 30px;
   font-size: 13px;
 
@@ -166,11 +150,9 @@ a {
   flex-direction: row;
 }
 .herobanner-container img {
-  /* border-radius: 10px; */
   width: 65%;
 }
 .herobanner-container-text {
-  /* border: solid black thin; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -179,7 +161,6 @@ a {
 .herobanner-container-text h1 {
   font-size: 40px;
   font-weight: 600;
-  /* color: blue; */
   margin: 1em 0;
 }
 .herobanner-container-text h2 {
@@ -209,7 +190,6 @@ a {
 }
 .footerbanner-container img {
   width: 70%;
-  /* height: 800px; */
 }
 
 /* navbar */
@@ -241,7 +221,6 @@ header{
   height: 104px;
   background-color: rgb(211, 189, 189);
   color: rgb(2, 2, 2);
-  /* margin-top: 10px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -305,20 +284,17 @@ header{
   top: -13px;
 }
 .qty-btn{
-  width: 50px;
+  width: 70px;
+  margin-top: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border: 2px solid black; */
 }
 
 /* small images container */
 .small-images-container {
   height: 500px;
   width: 120px;
-  /* border: 2px solid black; */
-  /* position: absolute; */
-  /* left: 100px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -342,10 +318,7 @@ header{
 
 /* CART */
 .cart-container {
-  /* width:600px; */
   color: black;
-  /* height: 100vh; */
-  /* position: absolute; */
   top: 0px;
   right: 0;
   z-index: 4;
@@ -354,23 +327,16 @@ header{
 
 .cart-product-container {
   display: flex;
-  /* flex-direction: column; */
-  /* justify-content: center; */
-  /* align-items: center; */
-
 }
 .cart-product-container-left {
   width: 60%;
-  /* border: solid black thin; */
 }
 .cart-product-container-right {
   width: 40%;
   height: 550px;
-  /* border: solid black thin; */
   padding: 20px 50px;
   position: sticky;
   top: 30px;
-  /* border-left: solid gray thin; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -380,8 +346,6 @@ header{
 .cart-product {
   width: 85%;
   margin: 0 auto;
-  /* border: solid black thin; */
-  /* height: 240px; */
   display: flex;
   margin-bottom: 30px;
   border-bottom: solid 1px rgba(42, 42, 42, 0.182);
@@ -401,14 +365,12 @@ header{
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  /* border: solid black thin; */
 }
 .cart-product-right .white-button {
   margin: 15px 0 0 0;
   color: red;
   font-size: 13px;
   padding: 3px 0;
-  /* border: solid thin #3498db; */
 }
 
 .cart-product-right h3 {
@@ -423,8 +385,6 @@ header{
 
 .cart-checkout {
   margin-top: 50px;
-  /* border: solid black thin; */
-  /* background-color: #e5e6e8; */
   border-radius: 6px;
   padding: 15px 10px;
   width: 350px;
@@ -463,7 +423,6 @@ header{
 
 
 th, td {
-  /* border: 1px solid rgb(2, 2, 2); */
   padding: 4px 35px;
   font-size: 15px;
 }
@@ -471,14 +430,12 @@ th, td {
 /* Review container */
 .review-container{
   height: 400px;
-  /* background-color: black; */
     display: flex;
 }
 .Rating-text{
   font-size: 100px;
 }
 .review-container-left{
-  /* border: 1px solid rgb(2, 2, 2); */
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -487,7 +444,6 @@ th, td {
 }
 .review-container-right{
   width: 60%;
-  /* border: 1px solid rgb(2, 2, 2); */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -495,7 +451,6 @@ th, td {
   padding: 10px 50px;
 }
 .review-text{
-  /* border: 1px solid rgb(2, 2, 2); */
   display: flex;
    padding: 5px 10px;
 }
@@ -521,11 +476,8 @@ th, td {
   }
   .product-card {
     width: 50%;
-    /* height: 13em; */
     margin: 0;
     box-shadow: none;
-    /* box-shadow: rgba(0, 0, 0, 0.15) 0.5px 0.5px 0.5px; */
-    /* border: solid black 0.1px; */
   }
   .product-card:hover {
     transform: scale(1);
@@ -600,7 +552,6 @@ th, td {
     height: auto;
     padding: 15px 16px;
     box-shadow: none;
-      /* border: 1px solid rgb(2, 2, 2); */
       display: block;
   }
 
@@ -622,7 +573,6 @@ th, td {
   }
 
   th, td {
-  /* border: 1px solid rgb(2, 2, 2); */
   padding: 2px 5px;
   font-size: 15px;
   width: 74%;
@@ -630,7 +580,6 @@ th, td {
 
   .cart-checkout h3 {
     font-size: 17px;
-    /* margin-top: 20px; */
     margin: 25px 0 0 7px;
   }
 
@@ -646,7 +595,6 @@ th, td {
 
   .review-container{
     flex-direction: column;
-    /* height: 550px; */
   }
 
   .review-container-left{
@@ -689,7 +637,6 @@ th, td {
 
   .left {
     width: 100%;
-    /* border: solid black 1px; */
   }
   .right {
     width: 100%;
@@ -712,7 +659,6 @@ th, td {
   }
   .product-detail-device-price {
     font-size: 1.5em;
-    /* margin-top: 4em; */
   }
   .small-images-container {
     width: 100%;
@@ -723,6 +669,5 @@ th, td {
   .small-images-container img {
     height: 70px;
     width: 70px;
-    /* padding: 0; */
   }
 }
