@@ -14,7 +14,6 @@ export const StateContext = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
-  
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -62,7 +61,6 @@ export const StateContext = ({ children }) => {
       (item) => item._id === product._id
     );
 
-    
     setTotalPrice(
       (prevTotalPrice) => prevTotalPrice + product.price * quantity
     );
@@ -82,15 +80,12 @@ export const StateContext = ({ children }) => {
       setCartItems(updatedCartItems);
     } else {
       product.quantity = quantity;
-
       setCartItems([...cartItems, { ...product }]);
-
-  
-    }
-  
-    
+    } 
     toast.success(`${qty} ${product.name} added to the cart.`);
   };
+
+
 
   const onRemove = (product) => {
     foundProduct = cartItems.find((item) => item._id === product._id);
@@ -106,11 +101,33 @@ export const StateContext = ({ children }) => {
     setCartItems(newCartItems);
   };
 
+
+  let index;
+  const toggleAdd = (id) => {
+    foundProduct = cartItems.find((item) => item._id === id)
+    index = cartItems.findIndex((product) => product._id === id);
+    const newCartItems = cartItems.filter((item) => item._id !== id)
+      setCartItems([...newCartItems, { ...foundProduct, quantity: foundProduct.quantity + 1 } ]);
+      setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price)
+      setTotalQuantities(prevTotalQuantities => prevTotalQuantities + 1)
+  }
+ 
+  const toggleMinus = (id) => {
+    foundProduct = cartItems.find((item) => item._id === id)
+    index = cartItems.findIndex((product) => product._id === id);
+    const newCartItems = cartItems.filter((item) => item._id !== id)
+    setCartItems([...newCartItems, { ...foundProduct, quantity: foundProduct.quantity - 1 } ]);
+    setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price)
+    setTotalQuantities(prevTotalQuantities => prevTotalQuantities - 1)
+
+    if(foundProduct.quantity == 1 ) {
+      const newCartItems = cartItems.filter((item) => item._id !== id);
+      setCartItems(newCartItems);
+    }
+  }
+
   const HandleCheckOut = ()=>{
-    
-    toast.error("Payment gateway not integrated")
-
-
+    toast.error("Payment gateway not integrated");
   };
 
 
@@ -130,6 +147,8 @@ export const StateContext = ({ children }) => {
         onAdd,
         onRemove,
         HandleCheckOut,
+        toggleAdd,
+        toggleMinus,
       }}
     >
       {children}
