@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { client, urlFor } from "../../components/lib/client";
-import { Product } from "../../components";
 import { useStateContext } from "../../context/StateContext";
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import {
   AiOutlineStar,
@@ -160,7 +159,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
   console.log(product);
 
   return {
-    props: {  product }
+    props: {  product,products }
   };
 };
 export default Productdetails;
