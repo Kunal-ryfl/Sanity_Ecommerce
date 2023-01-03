@@ -2,6 +2,8 @@
 
 ![Screenshot (21)](https://user-images.githubusercontent.com/73430123/198819145-1f82b2d4-991e-4015-a76c-9e78b9ef6a58.png)
 
+[Live](https://sigma-shop.vercel.app/)
+
 Features:- 
 ```
 Implemented cart (Local storage used).
