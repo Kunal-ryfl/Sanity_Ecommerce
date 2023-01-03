@@ -45,7 +45,7 @@ const Cart = (product) => {
                   </div>
 
                   <div className="cart-product-right">
-                    <h2>${item.price}</h2>
+                    <h2>₹{item.price}</h2>
                     <h3>{item.name}</h3>
                     <h3><div className="qty-btn"><AiFillMinusCircle size={22}  onClick={()=>toggleMinus(item._id)} cursor={"pointer"}/> {item.quantity} <AiFillPlusCircle size={22} onClick={()=>toggleAdd(item._id)} cursor={"pointer"}/></div></h3>
                     
@@ -70,7 +70,7 @@ const Cart = (product) => {
                   <table>
                     <tr>
                       <td> Price</td>
-                      <td> ${totalPrice}</td>
+                      <td> ₹{totalPrice}</td>
                     </tr>
                     <tr>
                       <td> Delivery Charges</td>
@@ -78,7 +78,7 @@ const Cart = (product) => {
                     </tr>
                     <tr>
                       <td> Discount</td>
-                      <td> $0</td>
+                      <td> ₹0</td>
                     </tr>
                     <tr>
                       <td> Total items</td>
@@ -86,7 +86,7 @@ const Cart = (product) => {
                     </tr>
                   </table>
 
-                  <h3> Total Amount&emsp; ${totalPrice}/-</h3>
+                  <h3> Total Amount&emsp; ₹{totalPrice}/-</h3>
                   <button className="cout-btn"  onClick={() => HandleCheckOut()} > CHECKOUT </button>
                 </div>
               </>
