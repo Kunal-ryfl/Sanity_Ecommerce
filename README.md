@@ -1,4 +1,14 @@
+## SIGMA Shop
+
 ![Screenshot (21)](https://user-images.githubusercontent.com/73430123/198819145-1f82b2d4-991e-4015-a76c-9e78b9ef6a58.png)
+
+Features 
+```
+Implemented cart (Local storage used).
+User can add or remove products.
+User can increase or decrease product's quantity.
+```
+
 ## Getting Started
 
 First, run the development server:
