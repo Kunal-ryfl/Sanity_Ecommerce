@@ -1,15 +1,12 @@
 import React from "react";
 import { client } from "../components/lib/client";
 import { Product, FooterBanner, HeroBanner } from "../components";
-import { animate, motion } from "framer-motion";
 
 const Home = ({ products, bannerData }) => (
   <div>
     <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
 
     <div className="heading">
-      {/* <h2>Smartphone Deals</h2> */}
-      {/* <p> Grab yours!</p> */}
     </div>
 
     <div className="products_container">
