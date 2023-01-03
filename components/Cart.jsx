@@ -10,7 +10,7 @@ import {
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "./lib/client";
 
-const Cart = (product) => {
+const Cart = () => {
   const { totalPrice, totalQuantities, onRemove, cartItems,toggleAdd,toggleMinus,HandleCheckOut} =
     useStateContext();
 
