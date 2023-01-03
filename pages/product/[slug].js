@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { client, urlFor } from "../../components/lib/client";
 import { useStateContext } from "../../context/StateContext";
-import { motion } from "framer-motion";
+import {  motion } from "framer-motion";
 import Link from "next/link";
 import {
   AiOutlineStar,
@@ -29,21 +29,20 @@ const fadeInUp = {
 
 
 const Productdetails = ({ product }) => {
-  const { image, name, details, price } = product;
+  // const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
   const { decQty, incQty, qty, onAdd, setShowCart,cartItems } = useStateContext();
   const check = cartItems.find((item) => item._id === product._id);
-  
+  // console.log(product)
   return (
     <motion.div initial="initial" animate="animate" exit={{ opacity: 0 }}>
       <div className="product-details-container">
         <div className="small-images-container">
-          {image?.map((item, i) => (
+          {product.image?.map((item, i) => (
             <img
               key={i}
               src={urlFor(item)}
               className={i === index ? "selected-image" : "small-image"}
-              // onMouseEnter={() => setIndex(i)}
               onClick={() => setIndex(i)}
             />
           ))}
@@ -53,17 +52,17 @@ const Productdetails = ({ product }) => {
             variants={fadeInUp}
             className="product-detail-image-container"
           >
-            <img src={urlFor(image && image[index])} />
+            <img src={urlFor(product.image && product.image[index])} />
           </motion.div>
         </div>
 
         <div className="right">
           <div  className="right-card">
             <pre className="configuration">Device Configuration...</pre>
-            <h1 className="product-detail-device-name"> {name} </h1>
-            <p className="product-detail-device-detail">{details}</p>
+            <h1 className="product-detail-device-name"> {product.name} </h1>
+            <p className="product-detail-device-detail">{product.details}</p>
 
-            <h1 className="product-detail-device-price">₹{price}</h1>
+            <h1 className="product-detail-device-price">₹{product.price}</h1>
 
            { 
              !check ?(
@@ -127,6 +126,9 @@ const Productdetails = ({ product }) => {
     </motion.div>
   );
 };
+
+
+
 export const getStaticPaths = async () => {
   const query = `*[_type == "product"] {
       slug {
@@ -151,15 +153,16 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params: { slug } }) => {
   const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
-  const productsQuery = '*[_type == "product"]';
+  // const productsQuery = '*[_type == "product"]';
 
   const product = await client.fetch(query);
-  const products = await client.fetch(productsQuery);
+  // const products = await client.fetch(productsQuery);
 
-  console.log(product);
+//   console.log(product);
 
   return {
-    props: {  product,products }
+    props: {  product }
   };
 };
+
 export default Productdetails;
