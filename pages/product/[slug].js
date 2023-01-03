@@ -64,7 +64,7 @@ const Productdetails = ({ product }) => {
             <h1 className="product-detail-device-name"> {name} </h1>
             <p className="product-detail-device-detail">{details}</p>
 
-            <h1 className="product-detail-device-price">${price}</h1>
+            <h1 className="product-detail-device-price">₹{price}</h1>
 
            { 
              !check ?(
