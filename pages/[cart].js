@@ -18,15 +18,16 @@ const CartDetails = () => {
       <div className="cart-container">
     
         <div className="cart-product-container">
+          
           <div className="cart-product-container-left">
-            
+                <h2 style={{ fontSize:'20px', margin:'10px 0px 40px 10px' }}>YOUR CART</h2>  
             {cartItems.length < 1 &&  (
               <div className="empty-cart">
                 <AiOutlineShopping size={150} />
-                <h3>Your shopping cart is empty!</h3>
+                <h3>Your cart is empty!</h3>
                 <Link href="/">
-                  <button type="button" className="blue-button">
-                    TAKE ME TO HOME
+                  <button type="button" className="take-me_home-btn">
+                  continue shopping
                   </button>
                 </Link>
               </div>
@@ -37,10 +38,12 @@ const CartDetails = () => {
               cartItems.map((item) => (
                 <div className="cart-product" key={item._id}>
                   <div className="cart-product-left">
-                    <img
+                    <Link href={`/product/${item.slug.current}`}>  
+                    <img 
                       src={urlFor(item?.image[0])}
                       className="cart-product-image"
-                    />
+                    /></Link>
+
                   </div>
 
                   <div className="cart-product-right">
