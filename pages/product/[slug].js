@@ -41,6 +41,7 @@ const Productdetails = ({ product }) => {
           {product.image?.map((item, i) => (
             <img
               key={i}
+              loading="lazy"
               src={urlFor(item)}
               className={i === index ? "selected-image" : "small-image"}
               onClick={() => setIndex(i)}
@@ -108,12 +109,12 @@ const Productdetails = ({ product }) => {
        </div>
      
      <div className="review-text">   
-         <img  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60"/> 
+         <img  loading="lazy" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60"/> 
       <p>Amazing phone with great cameras and better battery which gives you the best performance. I just love the camera .</p>
      
      </div>
      <div className="review-text">   
-         <img  src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60"/> 
+         <img  loading="lazy" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60"/> 
          <p> Really satisfied with the Product I received... It’s totally genuine and the packaging was also really good so if ur planning to buy just go for it.</p>
      </div>
          
