@@ -15,7 +15,7 @@ const FooterBanner = ({footerBanner}) => {
 
         <h3>{footerBanner.largeText2}.....</h3>
 </div>
-   <img id='image' src= {urlFor(footerBanner.image)}/>
+   <img id='image' loading="lazy" src= {urlFor(footerBanner.image)}/>
    
 </div>
     </>
