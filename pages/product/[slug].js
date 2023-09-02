@@ -74,9 +74,7 @@ const Productdetails = ({ product }) => {
             </button>   </>)
               }
 
-            <Link href={`/cart`}>
-            <button onClick={() => onAdd(product, qty)} className="white-button">BUY NOW</button>
-            </Link>
+            
           </div>
         </div>
       </div>
