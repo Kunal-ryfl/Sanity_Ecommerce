@@ -43,8 +43,8 @@ const Search = () => {
           display: products.length > 0 ? "" : "none",
         }}
       >
-        {products.map((item) => (
-          <Link href={`/product/${item.slug.current}`}>
+        {products.map((item,index) => (
+          <Link href={`/product/${item.slug.current}`} key={index}>
             <div style={{ marginTop: "15px" }} onClick={() => setProducts([])}>
               <h1 style={{ fontSize: "15px", color: "black" }}>{item.name}</h1>
             </div>
