@@ -9,4 +9,8 @@ module.exports = {
   experimental: {
     scrollRestoration: true,
   },
+  images: {
+		domains: ['cdn.sanity.io']
+	}
+  
 };

@@ -5,7 +5,7 @@ const HeroBanner = ({heroBanner}) => {
   return (
     <> 
 <div className='herobanner-container'>
-   <img src= {urlFor(heroBanner.image)}/>
+   <img src= {urlFor(heroBanner.image)} />
    <div className='herobanner-container-text' >
    
         <h2> introducing {heroBanner.smallText}.</h2>
