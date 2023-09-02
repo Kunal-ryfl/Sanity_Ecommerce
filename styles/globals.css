@@ -309,6 +309,7 @@ header{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  
 }
 .small-images-container img {
   height: 80px;

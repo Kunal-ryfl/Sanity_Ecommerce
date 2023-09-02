@@ -5,7 +5,7 @@ import React, {
   useEffect,
 } from "react";
 import { toast } from "react-hot-toast";
-
+import getStripe from '../components/lib/getStripe';
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
@@ -126,8 +126,26 @@ export const StateContext = ({ children }) => {
     }
   }
 
-  const HandleCheckOut = ()=>{
-    toast.error("Payment gateway not integrated");
+
+  const HandleCheckOut =async ()=>{
+    // toast.error("Payment gateway not integrated");
+    const stripe = await getStripe();
+
+    const response = await fetch('/api/stripe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cartItems),
+    });
+
+    if(response.statusCode === 500) return;
+    
+    const data = await response.json();
+
+    toast.loading('Redirecting...');
+
+    stripe.redirectToCheckout({ sessionId: data.id });
   };
 
 
