@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { client, urlFor } from "../../components/lib/client";
 import { useStateContext } from "../../context/StateContext";
 import {  motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import {
   AiOutlineStar,
@@ -39,10 +40,12 @@ const Productdetails = ({ product }) => {
       <div className="product-details-container">
         <div className="small-images-container">
           {product.image?.map((item, i) => (
-            <img
+            <Image
               key={i}
-              loading="lazy"
-              src={urlFor(item)}
+             height={80}
+             width={80}
+              alt="img"
+              src={`${urlFor(item)}`}
               className={i === index ? "selected-image" : "small-image"}
               onClick={() => setIndex(i)}
             />
