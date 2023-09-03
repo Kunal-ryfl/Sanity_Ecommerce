@@ -11,12 +11,14 @@ implemented search functionality.
 User can add or remove products.
 User can increase or decrease product's quantity.
 Sanity.io(CMS) used as backend.
+Stripe payment gateway.
 ```
 Technologies:- 
 ```
 Next.js
 Sanity.io(CMS) used as backend.
 HTML/CSS
+Stripe payments
 ```
 
 ScreenShots:-
