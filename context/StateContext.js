@@ -130,7 +130,8 @@ export const StateContext = ({ children }) => {
   const HandleCheckOut =async ()=>{
     // toast.error("Payment gateway not integrated");
     const stripe = await getStripe();
-
+     const toastId = toast.loading('Redirecting...');
+    
     const response = await fetch('/api/stripe', {
       method: 'POST',
       headers: {
@@ -139,11 +140,14 @@ export const StateContext = ({ children }) => {
       body: JSON.stringify(cartItems),
     });
 
-    if(response.statusCode === 500) return;
-    
+    if(response.statusCode === 500){ 
+      toast.error('error',{id:toastId})
+      return;}
+
+      toast.success('stripe loaded',{id:toastId})
+      
     const data = await response.json();
 
-    toast.loading('Redirecting...');
 
     stripe.redirectToCheckout({ sessionId: data.id });
   };

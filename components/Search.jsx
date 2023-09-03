@@ -65,7 +65,7 @@ const Search = () => {
       <div
         style={{
           position: "absolute",
-          width: "80%",
+          width: "60%",
           padding: "5px",
           backgroundColor: "white",
           cursor: "pointer",
