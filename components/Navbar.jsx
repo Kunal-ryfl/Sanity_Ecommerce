@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <>
       <div className="navbar-container">
-        <div style={{display:"flex", gap:'6px', alignItems:'center'}}>
+        <div style={{display:"flex", borderWidth:'3px', gap:'12px',  alignItems :'end'}}>
           <Link href="/">
             <div>
               <p className="logo-text">SIGMA</p>
