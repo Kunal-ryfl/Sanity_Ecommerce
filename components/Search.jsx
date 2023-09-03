@@ -81,7 +81,7 @@ const Search = () => {
                 display: "flex",
                 alignItems: "center",
               }}
-              onClick={() => setProducts([])}
+              onClick={() => setProducts([],setShow(false))}
             >
               <img
                 src={`${urlFor(item.image && item.image[0])}`}
