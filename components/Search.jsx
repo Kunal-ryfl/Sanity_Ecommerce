@@ -20,7 +20,7 @@ const Search = () => {
   async function searchProducts(e) {
     let val = e.target.value;
 
-    console.log("a ", val);
+    // console.log("a ", val);
     // setSearch(val);
     // console.log("b ",search);
 
@@ -39,12 +39,12 @@ const Search = () => {
         <div style={{ display: "flex",gap:'6px',alignItems:'center' }}>
           <input
             style={{
-              padding: " 4px 10px 4px 4px ",
+              padding: " 5px 10px 4px 4px ",
               fontSize: "17px",
               width: "100%",
               outline: "none",
-              borderRadius: "0px",
-              // position: "absolute",
+              borderRadius: "4px",
+              border:'none',
               maxWidth: "170px",
               top: 10,
             }}
