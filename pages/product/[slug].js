@@ -41,6 +41,8 @@ const Productdetails = ({ product }) => {
               height={80}
               width={80}
               alt="img"
+              placeholder="blur"
+              blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8sv5KPQAHjgLYUdlBYAAAAABJRU5ErkJggg=="
               src={`${urlFor(item)}`}
               className={i === index ? "selected-image" : "small-image"}
               onClick={() => setIndex(i)}
