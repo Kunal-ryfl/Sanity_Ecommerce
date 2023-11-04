@@ -42,7 +42,7 @@ const Productdetails = ({ product }) => {
               width={80}
               alt="img"
               placeholder="blur"
-              blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8sv5KPQAHjgLYUdlBYAAAAABJRU5ErkJggg=="
+              blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8sv5KPQAHjgLYUdlBYAAAAABJRU5ErkJggg=="
               src={`${urlFor(item)}`}
               className={i === index ? "selected-image" : "small-image"}
               onClick={() => setIndex(i)}
@@ -54,7 +54,7 @@ const Productdetails = ({ product }) => {
             variants={fadeInUp}
             className="product-detail-image-container"
           >
-            <img src={urlFor(product.image && product.image[index])} />
+            <img alt="" src={`${urlFor(product.image && product.image[index])}`}   />
           </motion.div>
         </div>
 

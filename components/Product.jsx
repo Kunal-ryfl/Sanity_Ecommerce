@@ -13,7 +13,7 @@ const Product = ({ product: { image, name, slug, price } }) => {
         <div className="product-card">
           <Image src={`${urlFor(image && image[0])}`} 
           placeholder='blur'
-          blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8sv5KPQAHjgLYUdlBYAAAAABJRU5ErkJggg=="
+          blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8sv5KPQAHjgLYUdlBYAAAAABJRU5ErkJggg=="
           height={200} width={200} alt="" loading="lazy" className="product-image" />
           <p className="product-name">{name}</p>
           <p className="product-price">₹{price}</p>
