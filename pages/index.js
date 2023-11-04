@@ -60,7 +60,7 @@ const Home = ({ products, bannerData }) => {
         <select onChange={filter} name="category" id="category">
           <option value="All">All</option>
           <option value="Mobile">Mobile</option>
-          <option value="Laptop">laptop</option>
+          <option value="Laptop">Laptop</option>
           <option value="Other">Other</option>
         </select>
 
