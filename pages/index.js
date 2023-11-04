@@ -31,7 +31,6 @@ const Home = ({ products, bannerData }) => {
       setPro(arr);
       return
     }
-
     let data = temp.filter((x) => x.category === category && x.price >= value);
     setPro(data);
   }, [category]);
@@ -44,6 +43,8 @@ const Home = ({ products, bannerData }) => {
     setValue(e.currentTarget.value);
   }
 
+  
+
   return (
     <div>
       <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
@@ -54,7 +55,8 @@ const Home = ({ products, bannerData }) => {
           display: "flex",
           gap: 10,
           alignItems: "center",
-          padding: "14px 4px",
+          padding: "14px 25px",
+
         }}
       >
         <select onChange={filter} name="category" id="category">
@@ -64,6 +66,7 @@ const Home = ({ products, bannerData }) => {
           <option value="Other">Other</option>
         </select>
 
+      
         <div class="slidecontainer">
           <input
             type="range"
