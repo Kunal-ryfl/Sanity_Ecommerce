@@ -12,7 +12,7 @@ const Navbar = () => {
         <div style={{display:"flex", borderWidth:'3px', gap:'12px',  alignItems :'end'}}>
           <Link href="/">
             <div>
-              <p className="logo-text">SIGMA</p>
+              <p  className="logo-text">SIGMA</p>
             </div>
           </Link>
           <Search />
