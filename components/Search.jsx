@@ -5,7 +5,7 @@ import Link from "next/link";
 import { BsSearch } from "react-icons/bs";
 import { MdOutlineCancel } from "react-icons/md";
 import { urlFor } from "./lib/client";
-
+import Image from "next/image";
 const Search = () => {
   const [show, setShow] = useState(false);
 
@@ -80,12 +80,18 @@ const Search = () => {
                 marginTop: "15px",
                 display: "flex",
                 alignItems: "center",
+                gap:5
               }}
               onClick={() => setProducts([],setShow(false))}
             >
-              <img
+              <Image
                 src={`${urlFor(item.image && item.image[0])}`}
-                style={{ height: "30px", width: "30px" }}
+                // style={{ height: "30px", width: "30px" }}
+                height={30}
+                width={30}
+                blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8sv5KPQAHjgLYUdlBYAAAAABJRU5ErkJggg=="
+                placeholder='blur'
+                alt=""
               />
               <h1
                 style={{
