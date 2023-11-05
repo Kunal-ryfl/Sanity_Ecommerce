@@ -28,6 +28,8 @@ const fadeInUp = {
 const Productdetails = ({ product }) => {
   // const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
+  const [imageUrl,setImageUrl]=useState(urlFor(product.image && product.image[index]))
+
   const { decQty, incQty, qty, onAdd, setShowCart, cartItems } =
     useStateContext();
     const [Loading,setLoading] = useState(true)
@@ -47,7 +49,7 @@ const Productdetails = ({ product }) => {
               blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8sv5KPQAHjgLYUdlBYAAAAABJRU5ErkJggg=="
               src={`${urlFor(item)}`}
               className={i === index ? "selected-image" : "small-image"}
-              onClick={() => setIndex(i)}
+              onClick={() => (setIndex(i),setImageUrl(urlFor(product.image && product.image[i])))}
             />
           ))}
         </div>
@@ -68,7 +70,8 @@ const Productdetails = ({ product }) => {
               style={{ display: Loading ? "none" : "block" }}
               onLoadingComplete={()=>setLoading(false)}
               layout="fill"
-              src={`${urlFor(product.image && product.image[index])}`}
+              // src={`${urlFor(product.image && product.image[index])}`}
+              src={`${imageUrl}`}
             />
           </motion.div>
           
