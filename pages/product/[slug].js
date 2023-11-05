@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { client, urlFor } from "../../components/lib/client";
 import { useStateContext } from "../../context/StateContext";
 import { motion } from "framer-motion";
@@ -29,6 +29,7 @@ const Productdetails = ({ product }) => {
   const [index, setIndex] = useState(0);
   const { decQty, incQty, qty, onAdd, setShowCart, cartItems } =
     useStateContext();
+
   const check = cartItems.find((item) => item._id === product._id);
   // console.log(product)
   return (
@@ -54,7 +55,13 @@ const Productdetails = ({ product }) => {
             variants={fadeInUp}
             className="product-detail-image-container"
           >
-            <img alt="" src={`${urlFor(product.image && product.image[index])}`}   />
+            <Image
+              alt=""
+              priority
+              objectFit="contain"
+              layout="fill"
+              src={`${urlFor(product.image && product.image[index])}`}
+            />
           </motion.div>
         </div>
 

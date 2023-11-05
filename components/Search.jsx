@@ -36,16 +36,16 @@ const Search = () => {
       style={{ position: "", zIndex: 10, backgroundColor: "", width: "80%" }}
     >
       {show ? (
-        <div style={{ display: "flex",gap:'6px',alignItems:'center' }}>
+        <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
           <input
             style={{
               padding: " 5px 10px 4px 4px ",
-              fontSize: "17px",
+              fontSize: "13px",
               width: "100%",
               outline: "none",
               borderRadius: "4px",
-              border:'none',
-              maxWidth: "170px",
+              border: "none",
+              maxWidth: "130px",
               top: 10,
             }}
             placeholder="search iphone... "
@@ -54,13 +54,16 @@ const Search = () => {
           />
           <div>
             <MdOutlineCancel
-              style={{ cursor: "pointer",scale:'1.5' }}
-              onClick={() => (setShow(false),setProducts([]))}
+              style={{ cursor: "pointer", scale: "1.5" }}
+              onClick={() => (setShow(false), setProducts([]))}
             />
           </div>
         </div>
       ) : (
-        <BsSearch style={{ cursor: "pointer",scale:'1.3' }} onClick={() => setShow(true)} />
+        <BsSearch
+          style={{ cursor: "pointer", scale: "1.3" }}
+          onClick={() => setShow(true)}
+        />
       )}
       <div
         style={{
@@ -80,9 +83,9 @@ const Search = () => {
                 marginTop: "15px",
                 display: "flex",
                 alignItems: "center",
-                gap:5
+                gap: 5,
               }}
-              onClick={() => setProducts([],setShow(false))}
+              onClick={() => setProducts([], setShow(false))}
             >
               <Image
                 src={`${urlFor(item.image && item.image[0])}`}
@@ -90,7 +93,7 @@ const Search = () => {
                 height={30}
                 width={30}
                 blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8sv5KPQAHjgLYUdlBYAAAAABJRU5ErkJggg=="
-                placeholder='blur'
+                placeholder="blur"
                 alt=""
               />
               <h1
