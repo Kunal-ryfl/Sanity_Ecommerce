@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineStar, AiFillStar, AiOutlineUser } from "react-icons/ai";
+import ClipLoader from "react-spinners/ClipLoader";
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 
@@ -29,7 +30,7 @@ const Productdetails = ({ product }) => {
   const [index, setIndex] = useState(0);
   const { decQty, incQty, qty, onAdd, setShowCart, cartItems } =
     useStateContext();
-
+    const [Loading,setLoading] = useState(true)
   const check = cartItems.find((item) => item._id === product._id);
   // console.log(product)
   return (
@@ -54,15 +55,23 @@ const Productdetails = ({ product }) => {
           <motion.div
             variants={fadeInUp}
             className="product-detail-image-container"
-          >
+            >
+            {
+              Loading && <ClipLoader/>
+            }
+
             <Image
               alt=""
               priority
               objectFit="contain"
+              className=""
+              style={{ display: Loading ? "none" : "block" }}
+              onLoadingComplete={()=>setLoading(false)}
               layout="fill"
               src={`${urlFor(product.image && product.image[index])}`}
             />
           </motion.div>
+          
         </div>
 
         <div className="right">
