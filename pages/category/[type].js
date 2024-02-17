@@ -17,7 +17,7 @@ const Page = ({ products }) => {
   return (
     <div className="category-page">
       {products?.map((item) => (
-        <SearchProd product={item} />
+        <SearchProd key={item.slug.current} product={item} />
       ))}
     </div>
   );
