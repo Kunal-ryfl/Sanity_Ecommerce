@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { client } from "../components/lib/client";
 import { Product, FooterBanner, HeroBanner } from "../components";
+import MobilePic from "../public/D_main-banner_hat0zq.png";
+import LaptopPic from "../public/PCP_LP_NC_16May2023_wc0ksd.png";
+import OtherPic from "../public/PCP_Headphones_earphones_15may2023_p0t7vz.png";
+import TvPic from "../public/PCP_TV_NC_15may2023_uv2e0k.png";
+import Image from "next/image";
+import Link from "next/link";
 
 const Home = ({ products, bannerData }) => {
   const AllProducts = products;
@@ -12,10 +18,10 @@ const Home = ({ products, bannerData }) => {
     // console.log(value)
     const temp = AllProducts;
 
-    let data = temp.filter((x) => x.price >= value );
+    let data = temp.filter((x) => x.price >= value);
 
-    if(category !== "All"){
-      data = data.filter((x)=>(x.category === category))
+    if (category !== "All") {
+      data = data.filter((x) => x.category === category);
     }
 
     setPro(data);
@@ -27,9 +33,9 @@ const Home = ({ products, bannerData }) => {
 
     if (category === "All") {
       let arr = AllProducts;
-      arr = arr.filter((x) => (x.price >= value) )
+      arr = arr.filter((x) => x.price >= value);
       setPro(arr);
-      return
+      return;
     }
     let data = temp.filter((x) => x.category === category && x.price >= value);
     setPro(data);
@@ -43,20 +49,18 @@ const Home = ({ products, bannerData }) => {
     setValue(e.currentTarget.value);
   }
 
-  
-
   return (
     <div>
       <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
       <div className="heading"></div>
 
-      <div
+      
+      {/* <div
         style={{
           display: "flex",
           gap: 10,
           alignItems: "center",
           padding: "14px 25px",
-
         }}
       >
         <select onChange={filter} name="category" id="category">
@@ -66,7 +70,6 @@ const Home = ({ products, bannerData }) => {
           <option value="Other">Other</option>
         </select>
 
-      
         <div class="slidecontainer">
           <input
             type="range"
@@ -78,16 +81,45 @@ const Home = ({ products, bannerData }) => {
             id="myRange"
           />
         </div>
-        <p style={{ fontSize:'14px'}}>
-        ₹{value}
-        </p>
-      </div>
+        <p style={{ fontSize: "14px" }}>₹{value}</p>
+      </div> */}
 
-      <div className="products_container">
+      {/* <div className="products_container">
         {pro?.map((product) => (
           <Product key={product.id} product={product} />
         ))}
+      </div> */}
+
+      <div className="select-category">
+        <div className="select-category-item">
+          <Link href={"category/mobile"}>
+            <Image src={MobilePic} />
+          </Link>
+        </div>
+
+        <div className="select-category-empty"></div>
+        <div className="select-category-empty"></div>
+
+        <div className="select-category-item">
+          <Link href={"category/laptop"}>
+            <Image src={LaptopPic} />
+          </Link>
+        </div>
+
+        <div className="select-category-item">
+          <Link href={"category/other"}>
+            <Image src={OtherPic} />
+          </Link>
+        </div>
+        <div className="select-category-empty"></div>
+        <div className="select-category-empty"></div>
+        <div className="select-category-item">
+          <Link href={"category/mobile"}>
+            <Image src={TvPic} />
+          </Link>
+        </div>
       </div>
+
       <FooterBanner footerBanner={bannerData.length && bannerData[1]} />
     </div>
   );
