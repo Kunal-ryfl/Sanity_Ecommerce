@@ -11,8 +11,8 @@ const SearchProd = ({ product }) => {
             src={`${urlFor(product?.image && product?.image[0])}`}
             placeholder="blur"
             blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8sv5KPQAHjgLYUdlBYAAAAABJRU5ErkJggg=="
-            height={200}
-            width={200}
+            height={150}
+            width={150}
             alt=""
             loading="lazy"
           />

@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineStar, AiFillStar, AiOutlineUser } from "react-icons/ai";
 import ClipLoader from "react-spinners/ClipLoader";
-
+import { IoIosArrowForward } from "react-icons/io";
 let easing = [0.6, -0.05, 0.01, 0.99];
 
 const fadeInUp = {
@@ -28,11 +28,13 @@ const fadeInUp = {
 const Productdetails = ({ product }) => {
   // const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
-  const [imageUrl,setImageUrl]=useState(urlFor(product.image && product.image[index]))
+  const [imageUrl, setImageUrl] = useState(
+    urlFor(product.image && product.image[index])
+  );
 
   const { decQty, incQty, qty, onAdd, setShowCart, cartItems } =
     useStateContext();
-    const [Loading,setLoading] = useState(true)
+  const [Loading, setLoading] = useState(true);
   const check = cartItems.find((item) => item._id === product._id);
   // console.log(product)
   return (
@@ -49,7 +51,10 @@ const Productdetails = ({ product }) => {
               blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8sv5KPQAHjgLYUdlBYAAAAABJRU5ErkJggg=="
               src={`${urlFor(item)}`}
               className={i === index ? "selected-image" : "small-image"}
-              onClick={() => (setIndex(i),setImageUrl(urlFor(product.image && product.image[i])))}
+              onClick={() => (
+                setIndex(i),
+                setImageUrl(urlFor(product.image && product.image[i]))
+              )}
             />
           ))}
         </div>
@@ -57,10 +62,8 @@ const Productdetails = ({ product }) => {
           <motion.div
             variants={fadeInUp}
             className="product-detail-image-container"
-            >
-            {
-              Loading && <ClipLoader/>
-            }
+          >
+            {Loading && <ClipLoader />}
 
             <Image
               alt=""
@@ -68,17 +71,59 @@ const Productdetails = ({ product }) => {
               objectFit="contain"
               className=""
               style={{ display: Loading ? "none" : "block" }}
-              onLoadingComplete={()=>setLoading(false)}
+              onLoadingComplete={() => setLoading(false)}
               layout="fill"
               // src={`${urlFor(product.image && product.image[index])}`}
               src={`${imageUrl}`}
             />
           </motion.div>
-          
         </div>
 
         <div className="right">
           <div className="right-card">
+            <div
+              style={{
+                width: "100%",
+                maxWidth: "1200px",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                padding:'7px 7px 7px 0'
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "14px",
+                  fontWeight: "bolder",
+                  color: "gray",
+                }}
+              >
+                Home
+              </p>
+
+              <IoIosArrowForward />
+
+              <p
+                style={{
+                  fontSize: "14px",
+                  fontWeight: "bolder",
+                  color: "gray",
+                }}
+              >
+                {product?.category}
+              </p>
+              <IoIosArrowForward />
+
+              <p
+                style={{
+                  fontSize: "14px",
+                  fontWeight: "bolder",
+                  color: "gray",
+                }}
+              >
+                {product?.name}
+              </p>
+            </div>
             <pre className="configuration">Device Configuration...</pre>
             <h1 className="product-detail-device-name"> {product.name} </h1>
             <p className="product-detail-device-detail">{product.details}</p>
