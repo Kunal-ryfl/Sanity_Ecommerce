@@ -1,11 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Codystar&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Codystar&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 html,
 body,
 * {
   padding: 0;
   margin: 0;
-  font-family: "Roboto Mono", monospace;
+  /* font-family: "Roboto Mono", monospace; */
+  font-family: "Open Sans", sans-serif;
+
   /* font-family: 'Codystar', sans-serif; */
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
