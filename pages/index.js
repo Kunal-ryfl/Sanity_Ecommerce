@@ -8,46 +8,46 @@ import TvPic from "../public/PCP_TV_NC_15may2023_uv2e0k.png";
 import Image from "next/image";
 import Link from "next/link";
 
-const Home = ({ products, bannerData }) => {
-  const AllProducts = products;
-  const [category, setCategory] = useState("All");
-  const [pro, setPro] = useState(products);
-  const [value, setValue] = useState(15000);
+const Home = ({  bannerData }) => {
+  // const AllProducts = products;
+  // const [category, setCategory] = useState("All");
+  // const [pro, setPro] = useState(products);
+  // const [value, setValue] = useState(15000);
 
-  useEffect(() => {
-    // console.log(value)
-    const temp = AllProducts;
+  // useEffect(() => {
+  //   // console.log(value)
+  //   const temp = AllProducts;
 
-    let data = temp.filter((x) => x.price >= value);
+  //   let data = temp.filter((x) => x.price >= value);
 
-    if (category !== "All") {
-      data = data.filter((x) => x.category === category);
-    }
+  //   if (category !== "All") {
+  //     data = data.filter((x) => x.category === category);
+  //   }
 
-    setPro(data);
-  }, [value]);
+  //   setPro(data);
+  // }, [value]);
 
-  useEffect(() => {
-    // console.log("UE = ", category);
-    const temp = AllProducts;
+  // useEffect(() => {
+  //   // console.log("UE = ", category);
+  //   const temp = AllProducts;
 
-    if (category === "All") {
-      let arr = AllProducts;
-      arr = arr.filter((x) => x.price >= value);
-      setPro(arr);
-      return;
-    }
-    let data = temp.filter((x) => x.category === category && x.price >= value);
-    setPro(data);
-  }, [category]);
+  //   if (category === "All") {
+  //     let arr = AllProducts;
+  //     arr = arr.filter((x) => x.price >= value);
+  //     setPro(arr);
+  //     return;
+  //   }
+  //   let data = temp.filter((x) => x.category === category && x.price >= value);
+  //   setPro(data);
+  // }, [category]);
 
-  const filter = (e) => {
-    setCategory(e.currentTarget.value);
-  };
+  // const filter = (e) => {
+  //   setCategory(e.currentTarget.value);
+  // };
 
-  function filterPrice(e) {
-    setValue(e.currentTarget.value);
-  }
+  // function filterPrice(e) {
+  //   setValue(e.currentTarget.value);
+  // }
 
   return (
     <div>
@@ -125,14 +125,14 @@ const Home = ({ products, bannerData }) => {
   );
 };
 export const getServerSideProps = async () => {
-  const query = '*[_type == "product"]';
-  const products = await client.fetch(query);
+  // const query = '*[_type == "product"]';
+  // const products = await client.fetch(query);
 
-  const bannerQuery = '*[_type == "banner"]';
+  const bannerQuery = '*[_type == "banner"] ';
   const bannerData = await client.fetch(bannerQuery);
 
   return {
-    props: { products, bannerData },
+    props: { bannerData },
   };
 };
 

@@ -2,10 +2,11 @@ import "../styles/globals.css";
 import { Layout } from "../components";
 import { StateContext } from "../context/StateContext";
 import { Toaster } from "react-hot-toast";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import Router from "next/router";
-import { PropagateLoader } from "react-spinners";
+import {  ClipLoader } from "react-spinners";
+
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = React.useState(false);
   React.useEffect(() => {
@@ -33,9 +34,25 @@ function MyApp({ Component, pageProps }) {
         <Layout>
           <Toaster />
           {loading ? (
-            <div style={{ minHeight: "100vh",width:'100vw',display:'flex',alignItems:'center' , justifyContent:'center'}}>
-              <PropagateLoader color='grey' />
-            </div>
+            <motion.div
+              key="modal"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              
+              style={{
+                minHeight: "100vh",
+                width: "100vw",
+                display: "flex",
+                flexDirection:'column',
+                alignItems: "center",
+                justifyContent: "center",
+                gap:'7px'
+              }}
+            >
+              <ClipLoader  />
+            </motion.div>
+            
           ) : (
             <Component {...pageProps} />
           )}

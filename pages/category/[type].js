@@ -8,7 +8,7 @@ import { IoIosArrowForward } from "react-icons/io";
 const Page = ({ products }) => {
   const router = useRouter();
   const { type } = router.query;
-
+    
   products = products.filter(
     (item) => item.category.toLocaleLowerCase() == type
   );
@@ -49,7 +49,7 @@ const Page = ({ products }) => {
 export const getServerSideProps = async () => {
   const query = '*[_type == "product"]';
   const products = await client.fetch(query);
-
+ 
   return {
     props: { products },
   };
