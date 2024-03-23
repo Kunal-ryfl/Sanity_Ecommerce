@@ -6,6 +6,8 @@ import { BsSearch } from "react-icons/bs";
 import { MdOutlineCancel } from "react-icons/md";
 import { urlFor } from "./lib/client";
 import Image from "next/image";
+import SearchModal from "./SearchModal";
+
 const Search = () => {
   const [show, setShow] = useState(false);
 
@@ -33,19 +35,20 @@ const Search = () => {
 
   return (
     <div
-      style={{ position: "", zIndex: 10, backgroundColor: "", width: "80%" }}
+      style={{ position: "", zIndex: 10, backgroundColor: "red" }}
     >
+      <SearchModal/>
       {show ? (
-        <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+        <div style={{ position:'absolute',padding:'10px', inset:0, display: "flex", justifyContent:'center', alignItems:'center',  gap: "6px", background:'black',alignItems: "center" }}>
           <input
             style={{
               padding: " 5px 10px 4px 4px ",
-              fontSize: "13px",
+              fontSize: "16px",
               width: "100%",
               outline: "none",
               borderRadius: "4px",
               border: "none",
-              maxWidth: "130px",
+              maxWidth: "450px",
               top: 10,
             }}
             placeholder="search iphone... "

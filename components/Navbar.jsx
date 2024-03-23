@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AiOutlineShopping } from "react-icons/ai";
 import { useStateContext } from "../context/StateContext";
 import Search from "./Search";
+import SearchModal from "./SearchModal";
 
 const Navbar = () => {
   const { totalQuantities } = useStateContext();
@@ -15,7 +16,8 @@ const Navbar = () => {
               <p  className="logo-text">SIGMA</p>
             </div>
           </Link>
-          <Search />
+          {/* <Search /> */}
+          <SearchModal/>
         </div>
 
         <Link href={`/cart`}>
