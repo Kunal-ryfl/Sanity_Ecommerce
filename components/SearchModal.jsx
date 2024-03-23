@@ -43,18 +43,18 @@ const SearchModal = () => {
         <div className="modal" onClick={handleOutsideClick}>
           <div className="modal-content">
             <span className="close" onClick={closeModal}>&times;</span>
-            <h2>Search</h2>
             <input type="text" placeholder="Search..." 
                 onChange={(e) => searchProducts(e)}
+                style={{padding:'7px 35px 7px 7px',outline:'none'}}
             />
           <div  style={{color:'black'}}>
      
           {
-          loading &&< div style={{display:'flex',gap:'10px' , alignItems:'baseline'}}> < AiOutlineLoading3Quarters  className="rotating-icon" /> <p style={{marginTop:'10px'}}>loading...</p> </div>
+          loading &&< div style={{display:'flex',gap:'10px',marginTop:'20px' , alignItems:'baseline'}}> < AiOutlineLoading3Quarters  className="rotating-icon" /> <p >loading...</p> </div>
          }
 
          {
-          !loading  && products.length<1 && < div style={{display:'flex',gap:'10px' , alignItems:'baseline'}}> <ImCancelCircle /> <p style={{marginTop:'10px'}}>nothing here</p> </div>
+          !loading  && products.length<1 && < div style={{display:'flex',gap:'10px',marginTop:'20px' , alignItems:'baseline'}}> <ImCancelCircle /> <p >nothing here</p> </div>
          }
 
         { !loading && products.map((item, index) => (
