@@ -67,7 +67,7 @@ const SearchModal = () => {
                 gap: 5,
                 cursor:'pointer'
               }}
-              onClick={() => setProducts([])}
+              onClick={() => (setProducts([]),setIsOpen(false))}
             >
               <Image
                 src={`${urlFor(item.image && item.image[0])}`}
