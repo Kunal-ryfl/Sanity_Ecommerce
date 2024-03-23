@@ -114,7 +114,7 @@ const Home = ({  bannerData }) => {
         <div className="select-category-empty"></div>
         <div className="select-category-empty"></div>
         <div className="select-category-item">
-          <Link href={"category/mobile"}>
+          <Link href={"category/tv"}>
             <Image src={TvPic} />
           </Link>
         </div>

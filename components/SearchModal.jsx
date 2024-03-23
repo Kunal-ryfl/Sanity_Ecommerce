@@ -4,11 +4,15 @@ import { urlFor } from "./lib/client";
 import Image from "next/image";
 import { client } from "./lib/client";
 import Link from "next/link";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import  { ImCancelCircle }from "react-icons/im";
+
 
 const SearchModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
+   const [loading,setLoading] = useState(false);
 
   const handleOutsideClick = (e) => {
     if (e.target.classList.contains('modal')) {
@@ -18,6 +22,7 @@ const SearchModal = () => {
 
   const [products, setProducts] = useState([]);
   async function searchProducts(e) {
+    setLoading(true)
     let val = e.target.value;
 
     // console.log("a ", val);
@@ -28,6 +33,7 @@ const SearchModal = () => {
     const response = await client.fetch(query);
 
     setProducts(response);
+    setLoading(false)
     // console.log(products);
   }
   return (
@@ -42,12 +48,16 @@ const SearchModal = () => {
                 onChange={(e) => searchProducts(e)}
             />
           <div  style={{color:'black'}}>
-
-         {
-          products.length<1 && <p style={{marginTop:'10px'}}>nothing here</p>
+     
+          {
+          loading &&< div style={{display:'flex',gap:'10px' , alignItems:'baseline'}}> < AiOutlineLoading3Quarters  className="rotating-icon" /> <p style={{marginTop:'10px'}}>loading...</p> </div>
          }
 
-        {  products.map((item, index) => (
+         {
+          !loading  && products.length<1 && < div style={{display:'flex',gap:'10px' , alignItems:'baseline'}}> <ImCancelCircle /> <p style={{marginTop:'10px'}}>nothing here</p> </div>
+         }
+
+        { !loading && products.map((item, index) => (
           <Link href={`/product/${item.slug.current}`} key={index}>
             <div
               style={{
