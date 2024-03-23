@@ -43,8 +43,11 @@ const SearchModal = () => {
             />
           <div  style={{color:'black'}}>
 
-         
-        {products.map((item, index) => (
+         {
+          products.length<1 && <p style={{marginTop:'10px'}}>nothing here</p>
+         }
+
+        {  products.map((item, index) => (
           <Link href={`/product/${item.slug.current}`} key={index}>
             <div
               style={{
