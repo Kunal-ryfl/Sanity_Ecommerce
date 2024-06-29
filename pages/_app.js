@@ -5,7 +5,7 @@ import { Toaster } from "react-hot-toast";
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import Router from "next/router";
-import {  ClipLoader } from "react-spinners";
+import {  ClipLoader ,BarLoader} from "react-spinners";
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = React.useState(false);
@@ -50,7 +50,8 @@ function MyApp({ Component, pageProps }) {
                 gap:'7px'
               }}
             >
-              <ClipLoader  />
+              {/* <ClipLoader  /> */}
+              <BarLoader  />
             </motion.div>
             
           ) : (

@@ -52,8 +52,8 @@ const Productdetails = ({ product }) => {
               src={`${urlFor(item)}`}
               className={i === index ? "selected-image" : "small-image"}
               onClick={() => (
-                setIndex(i),
-                setImageUrl(urlFor(product.image && product.image[i]))
+                setImageUrl(urlFor(product.image && product.image[i])),
+                setIndex(i)
               )}
             />
           ))}
