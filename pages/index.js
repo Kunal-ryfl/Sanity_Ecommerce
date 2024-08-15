@@ -8,7 +8,12 @@ import TvPic from "../public/PCP_TV_NC_15may2023_uv2e0k.png";
 import Image from "next/image";
 import Link from "next/link";
 
+
 const Home = ({  bannerData }) => {
+
+
+  
+
   // const AllProducts = products;
   // const [category, setCategory] = useState("All");
   // const [pro, setPro] = useState(products);
