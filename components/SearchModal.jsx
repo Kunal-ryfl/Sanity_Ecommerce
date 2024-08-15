@@ -34,7 +34,6 @@ const SearchModal = () => {
 
     setProducts(response);
     setLoading(false)
-    // console.log(products);
   }
   return (
     <>

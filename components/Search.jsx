@@ -10,19 +10,24 @@ import SearchModal from "./SearchModal";
 
 const Search = () => {
   const [show, setShow] = useState(false);
-
+  
   useEffect(() => {
     show
-      ? (document.body.style.overflow = "hidden")
-      : (document.body.style.overflow = "auto");
+    ? (document.body.style.overflow = "hidden")
+    : (document.body.style.overflow = "auto");
   }, [show]);
-
+  
   // const [search, setSearch] = useState("");
   const [products, setProducts] = useState([]);
+
   async function searchProducts(e) {
     let val = e.target.value;
 
-    // console.log("a ", val);
+  //   if(val===""){
+  //     searchProducts([])
+  //     return;
+  // }
+
     // setSearch(val);
     // console.log("b ",search);
 

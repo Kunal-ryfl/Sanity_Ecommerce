@@ -19,6 +19,8 @@ const CartDetails = () => {
     HandleCheckOut,
   } = useStateContext();
 
+
+  let disabled =  cartItems?.length===0;
   return (
     <>
       <div className="cart-container">
@@ -87,7 +89,7 @@ const CartDetails = () => {
           {/* conditional rendering using ternary opeartion in nextjs */}
 
           <div className="cart-product-container-right">
-            {cartItems.length >= 1 ? (
+            {cartItems.length >= 0 ? (
               <>
                 <h2>Order Summary </h2>
                 <div className="cart-checkout">
@@ -111,9 +113,8 @@ const CartDetails = () => {
                   </table>
 
                   <h3> Total Amount&emsp; ₹{totalPrice}/-</h3>
-                  <button className="cout-btn" onClick={() => HandleCheckOut()}>
-                    {" "}
-                    CHECKOUT{" "}
+                  <button disabled={disabled} className={!disabled?"cout-btn":"cout-btn-disabled"} onClick={() => HandleCheckOut()}>
+                    CHECKOUT
                   </button>
                 </div>
               </>

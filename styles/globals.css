@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Codystar&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Codystar&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway+Dots&display=swap');
+
+
 html,
 body,
 * {
@@ -150,9 +153,14 @@ a {
   display: flex;
   flex-direction: row;
   height: calc(100 - 19rem);
+  background: #f2f2f2;
+  /* aspect-ratio: 5/4; */
 }
 .herobanner-container img {
-  width: 65%;
+  width: 45%;
+  aspect-ratio: 6/5; 
+  margin: auto;
+
 }
 .herobanner-container-text {
   display: flex;
@@ -185,14 +193,17 @@ a {
 }
 
 .footerbanner-container {
-  width: 100%;
-  margin: 0 auto;
+  /* width: 100%; */
+  /* margin: 0 auto; */
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
+
 }
 .footerbanner-container img {
-  width: 70%;
+  width: 30%;
 }
+
+
 
 /* navbar */
 
@@ -435,6 +446,32 @@ header {
   border-radius: 7px;
   margin: 50px 0 20px 0px;
 }
+.cout-btn-disabled {
+  color: white;
+  padding: 10px 55px;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  background-color: #23b941;
+  border: none;
+  border-radius: 7px;
+  margin: 50px 0 20px 0px;
+}
+.cout-btn-disabled:disabled::before { 
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5); 
+  pointer-events: none; 
+}
+
+.cout-btn-disabled:disabled {
+  cursor: not-allowed; 
+}
+
 
 th,
 td {
@@ -626,13 +663,15 @@ td {
     padding: 25px;
   }
   .herobanner-container img {
-    height: 500px;
-    width: 810px;
-    transform: translateX(-50px);
+    /* height: 350px; */
+    width: 100%;
+    /* margin: auto; */
+    /* transform: translateX(-22px); */
+    aspect-ratio: 6/5;
   }
   #image {
-    transform: translateX(-190px);
-    height: 450px;
+    /* transform: translateX(-190px); */
+    /* height: 450px; */
   }
 
   .herobanner-container h2 {
@@ -750,6 +789,8 @@ td {
 
 /* TAB */
 @media screen and (max-width: 1150px) {
+  
+  
   .select-category {
     display: grid;
     grid-template-columns: 1fr 1fr;
