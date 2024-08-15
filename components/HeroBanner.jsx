@@ -5,23 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const HeroBanner = ({ heroBanner }) => {
-  let easing = [0.6, -0.05, 0.01, 0.99];
 
-  const fadeInUp = {
-    initial: {
-      y: 60,
-      opacity: 0,
-      transition: { duration: 0.6, ease: easing },
-    },
-    animate: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: easing,
-      },
-    },
-  };
+  
   return (
     <>
       <div className="herobanner-container">
@@ -45,36 +30,35 @@ const HeroBanner = ({ heroBanner }) => {
           <h4> BY DESIGN</h4>
         </div>
 
-        <motion.img 
-   initial={{ scale: 1.12,opacity:0 }} 
-   animate={{ scale: 1 ,opacity:1 }}   
-   transition={{ 
-     duration: 0.6, 
-     ease: "easeOut", 
-     type: "spring", 
-     stiffness: 100,  
-     damping: 10 
-   }}
-  
-  src={urlFor(heroBanner.image)} />
+        <motion.img
+          initial={{ scale: 1.12, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{
+            duration: 0.6,
+            ease: "easeOut",
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+          }}
+          src={urlFor(heroBanner.image)}
+        />
 
         <div className="herobanner-container-text">
-        <motion.div 
-  initial={{ opacity: 0, y: 50 }} // Start invisible and slightly below their final position
-  animate={{ opacity: 1, y: 0 }}   // Fade in and move up to their final position
-  transition={{
-    delay: 0.3, // Slight delay after the image animation
-    duration: 0.6, 
-    ease: "easeOut" 
-  }}
->
-  <h2> {heroBanner.smallText}.</h2>
-  <h1> {heroBanner.midText} </h1>
-  <p>{heroBanner.desc}</p>
-</motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }} // Start invisible and slightly below their final position
+            animate={{ opacity: 1, y: 0 }} // Fade in and move up to their final position
+            transition={{
+              delay: 0.3, // Slight delay after the image animation
+              duration: 0.6,
+              ease: "easeOut",
+            }}
+          >
+            <h2> {heroBanner.smallText}.</h2>
+            <h1> {heroBanner.midText} </h1>
+            <p>{heroBanner.desc}</p>
+          </motion.div>
 
           <div>
-            
             <Link href={"/product/cmf-phone-1-5g"}>
               <button
                 style={{
