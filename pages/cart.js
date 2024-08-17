@@ -8,6 +8,8 @@ import {
 import Image from "next/image";
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../components/lib/client";
+import { motion, AnimatePresence } from "framer-motion";
+
 const CartDetails = () => {
   const {
     totalPrice,
@@ -19,8 +21,8 @@ const CartDetails = () => {
     HandleCheckOut,
   } = useStateContext();
 
+  let disabled = cartItems?.length === 0;
 
-  let disabled =  cartItems?.length===0;
   return (
     <>
       <div className="cart-container">
@@ -41,52 +43,60 @@ const CartDetails = () => {
               </div>
             )}
 
-            {cartItems.length >= 1 &&
-              cartItems.map((item) => (
-                <div className="cart-product" key={item._id}>
-                  <div className="cart-product-left">
-                    <Link href={`/product/${item.slug.current}`}>
-                      <Image
-                        src={`${urlFor(item?.image[0])}`}
-                        className="cart-product-image"
-                      width={200}
-                      height={200}
-                      alt=""
-                      />
-                    </Link>
-                  </div>
-
-                  <div className="cart-product-right">
-                    <h2>₹{item.price}</h2>
-                    <h3>{item.name}</h3>
-                    <h3>
-                      <div className="qty-btn">
-                        <AiFillMinusCircle
-                          size={22}
-                          onClick={() => toggleMinus(item._id)}
-                          cursor={"pointer"}
-                        />{" "}
-                        {item.quantity}{" "}
-                        <AiFillPlusCircle
-                          size={22}
-                          onClick={() => toggleAdd(item._id)}
-                          cursor={"pointer"}
+            <AnimatePresence>
+              {cartItems.length >= 1 &&
+                cartItems.map((item) => (
+                  <motion.div
+                    className="cart-product"
+                    key={item._id}
+                    layout
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="cart-product-left">
+                      <Link href={`/product/${item.slug.current}`}>
+                        <Image
+                          src={`${urlFor(item?.image[0])}`}
+                          className="cart-product-image"
+                          width={200}
+                          height={200}
+                          alt=""
                         />
-                      </div>
-                    </h3>
+                      </Link>
+                    </div>
 
-                    <button
-                      className="white-button"
-                      onClick={() => onRemove(item)}
-                    >
-                      REMOVE
-                    </button>
-                  </div>
-                </div>
-              ))}
+                    <div className="cart-product-right">
+                      <h2>₹{item.price}</h2>
+                      <h3>{item.name}</h3>
+                      <h3>
+                        <div className="qty-btn">
+                          <AiFillMinusCircle
+                            size={22}
+                            onClick={() => toggleMinus(item._id)}
+                            cursor={"pointer"}
+                          />{" "}
+                          {item.quantity}{" "}
+                          <AiFillPlusCircle
+                            size={22}
+                            onClick={() => toggleAdd(item._id)}
+                            cursor={"pointer"}
+                          />
+                        </div>
+                      </h3>
+
+                      <button
+                        className="white-button"
+                        onClick={() => onRemove(item)}
+                      >
+                        REMOVE
+                      </button>
+                    </div>
+                  </motion.div>
+                ))}
+            </AnimatePresence>
           </div>
-
-          {/* conditional rendering using ternary opeartion in nextjs */}
 
           <div className="cart-product-container-right">
             {cartItems.length >= 0 ? (
@@ -113,7 +123,11 @@ const CartDetails = () => {
                   </table>
 
                   <h3> Total Amount&emsp; ₹{totalPrice}/-</h3>
-                  <button disabled={disabled} className={!disabled?"cout-btn":"cout-btn-disabled"} onClick={() => HandleCheckOut()}>
+                  <button
+                    disabled={disabled}
+                    className={!disabled ? "cout-btn" : "cout-btn-disabled"}
+                    onClick={() => HandleCheckOut()}
+                  >
                     CHECKOUT
                   </button>
                 </div>
