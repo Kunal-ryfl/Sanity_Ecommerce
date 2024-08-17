@@ -630,6 +630,7 @@ td {
 
   .left {
     height: calc(100vh - 20rem);
+    overflow: hidden;
   }
   .heading h2 {
     font-size: 20px;

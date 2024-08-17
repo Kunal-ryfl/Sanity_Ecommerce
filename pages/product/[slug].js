@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { client, urlFor } from "../../components/lib/client";
 import { useStateContext } from "../../context/StateContext";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineStar, AiFillStar, AiOutlineUser } from "react-icons/ai";
@@ -58,27 +58,39 @@ const Productdetails = ({ product }) => {
             />
           ))}
         </div>
-        <div className="left">
-          <motion.div
-            variants={fadeInUp}
-            className="product-detail-image-container"
-          >
-            {Loading && <ClipLoader />}
-
-            <Image
-              alt=""
-              priority
-              objectFit="contain"
-              className=""
-              style={{ display: Loading ? "none" : "block" }}
-              onLoadingComplete={() => setLoading(false)}
-              layout="fill"
-              // src={`${urlFor(product.image && product.image[index])}`}
-              src={`${imageUrl}`}
-            />
-          </motion.div>
-        </div>
-
+        <AnimatePresence>
+          {product.image.map((x, i) =>
+            i === index ? (
+              <div className="left">
+                <motion.div
+                  // variants={fadeInUp}
+                  className="product-detail-image-container"
+                  key={product?.name}
+                  layout
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.5, type: "just" }}
+                >
+                  {Loading && <ClipLoader />}
+                  <Image
+                    alt=""
+                    priority
+                    objectFit="contain"
+                    className=""
+                    style={{ display: Loading ? "none" : "block" }}
+                    onLoadingComplete={() => setLoading(false)}
+                    layout="fill"
+                    src={`${urlFor(product.image && product.image[i])}`}
+                    // src={`${imageUrl}`}
+                  />
+                </motion.div>
+              </div>
+            ) : (
+              <></>
+            )
+          )}
+        </AnimatePresence>
         <div className="right">
           <div className="right-card">
             <div
@@ -88,7 +100,7 @@ const Productdetails = ({ product }) => {
                 display: "flex",
                 alignItems: "center",
                 gap: "6px",
-                padding:'7px 7px 7px 0'
+                padding: "7px 7px 7px 0",
               }}
             >
               <p
@@ -139,7 +151,6 @@ const Productdetails = ({ product }) => {
               </button>
             ) : (
               <>
-                {" "}
                 <button className="grey-button">IN THE CART</button>{" "}
               </>
             )}
